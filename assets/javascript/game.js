@@ -31,7 +31,7 @@ function stop() {
 
     timerDone = "Timer Up!"
 
-    $("showTimer").html("<h2>" + timerDone + "</h2>");
+    $("#showTimer").html("<h2>" + timerDone + "</h2>");
 
     console.log("Timer Done");
 
