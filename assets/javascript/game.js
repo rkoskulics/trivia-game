@@ -10,13 +10,10 @@ var timerDone = "";
 // Put the correct answer in the first place in each answer array
 //
 
-var questionArray = ["What is the first letter of this sentence?", "When are you answering this question?", "How many letters does this sentence have?"];
+var questionAnswers = {question1: ["What is the first letter of this sentence?", "w", "h", "s", "q"],
+ question2: ["When are you answering this question?", "Now", "Today", "Later", "Never"],
+ question3: ["How many letters does this sentence have?", 34, 21, 2, 116]};
 
-var answerObject = {["w", "h", "s", "q"];
-
-["Now", "Today", "Later", "Never"];
-
-[34, 21, 2, 116]};
 
 $("#start").on("click", run);
 
@@ -28,12 +25,23 @@ $("#start").on("click", run);
 
 
 	function run() {
-	      intervalInfo = setInterval(decrement, 1000);
+	    intervalInfo = setInterval(decrement, 1000);
 
-	      // Select a question at random and display it
-	      var visibleQuestion = questionArray[Math.floor(Math.random() * questionArray.length)];
-	      $("#question").append(visibleQuestion);
-	      // Pick the correct array based on the question, make buttons based on the answers
+	      // Select a number at random to select an item from questionAnswers
+	    var visibleQuestionNumber = [Math.floor(Math.random() * 3)];
+	    console.log(visibleQuestionNumber);
+	    // Use the random number to select a random array
+	    var visibleQuestion = questionAnswers[Object.keys(questionAnswers)[visibleQuestionNumber]];
+		console.log(visibleQuestion);
+		// Show the question on the screen
+	    $("#question").append(visibleQuestion[0]);
+	    // Make buttons based on the answers
+	    for(var i = 1; i < visibleQuestion.length; i++ ) {
+          var answerButton= $('<input type="button" value="' + visibleQuestion[i] + '"/>');
+        $("#answers").append(answerButton);
+        }
+
+	      
 	      // Display the buttons
 	    }
 
