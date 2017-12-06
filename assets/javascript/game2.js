@@ -44,15 +44,13 @@ $("#restart").on("click", restart)
 		$("#question").append(visibleQuestion[0]);
 	    // Display the answers in buttons
 	    for(var j = 1; j < visibleQuestion.length; j++ ) {
-	    	// var a = $("<button>");
-	    	// a.attr("data-name", visibleQuestion[j]);
-	    	// a.text(visibleQuestion[j]);
-	    	// $("#answers").append(a);
-        	var answerButton= $('<input type="button" value="' + visibleQuestion[j] + '"/>');
+        	var answerButton= $('<input type="button" class="btn btn-primary" value="' + visibleQuestion[j] + '"/>');
         	answerButton.addClass("score");
         	answerButton.attr("data-name", visibleQuestion[j]);
         // Display the buttons
         $("#answers").append(answerButton);
+        $("#answers").append("<br>");
+        $("#answers").append("<br>");
         }	    
 	}	
 	// Timer function
