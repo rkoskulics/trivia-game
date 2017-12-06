@@ -14,6 +14,7 @@ var questionAnswers = {question1: ["What is the first letter of this sentence?",
 $("#start").on("click", run);
 
 	function run() {
+		
 	    intervalInfo = setInterval(decrement, 1000);
 
 	    // Select a number at random to select an item from questionAnswers
@@ -29,10 +30,7 @@ $("#start").on("click", run);
           var answerButton= $('<input type="button" value="' + visibleQuestion[i] + '"/>');
         // Display the buttons
         $("#answers").append(answerButton);
-        }
-
-	      
-	    
+        }	    
 	}
 
 	function decrement() {
