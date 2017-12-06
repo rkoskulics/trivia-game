@@ -76,6 +76,7 @@ $("#start").on("click", run);
 	function scoreKeeper() {
 		var buttonValue = $(this).attr("data-name");
 		console.log(buttonValue);
+		stop();
 
 	}
 	// Create an event listener for all buttons with the ID answer
