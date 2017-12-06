@@ -36,7 +36,7 @@ $("#start").on("click", run);
 	    	// a.text(visibleQuestion[j]);
 	    	// $("#answers").append(a);
         	var answerButton= $('<input type="button" value="' + visibleQuestion[j] + '"/>');
-        	answerButton.attr("data-name", visibleQuestion[j])
+        	answerButton.attr("data-name", visibleQuestion[j]);
         // Display the buttons
         $("#answers").append(answerButton);
         }	    
@@ -74,7 +74,7 @@ $("#start").on("click", run);
 	}
 	// function to check if the right button is pushed
 	function scoreKeeper() {
-		var buttonValue = $(this).attr("data-name");
+		var buttonValue = $(this).attr("value");
 		console.log(buttonValue);
 		stop();
 
