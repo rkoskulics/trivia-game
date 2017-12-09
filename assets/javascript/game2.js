@@ -13,9 +13,12 @@ var correctAnswers = 0;
 
 var wrongAnswers = 0;
 
+var result;
+
 var questionAnswers = {question1: ["What is the first letter of this sentence?", "w", "h", "s", "q"],
  question2: ["When are you answering this question?", "Now", "Today", "Later", "Never"],
- question3: ["How many letters does this sentence have?", "34", "21", "2", "116"]};
+ question3: ["How many letters does this sentence have?", "34", "21", "2", "116"],
+question4: ["Who invented the light bulb?", "Einstein", "Tesla", "Edison", "Newton"]};
 
 // Start the game
 $("#start").on("click", run);
@@ -36,10 +39,10 @@ $("#restart").on("click", restart)
 		$("#start").hide();
 		$("#restart").hide();
 		$("#gameStatus").html("<h2>Game On!</h2>");
+		$("#result").empty();
 	    intervalInfo = setInterval(decrement, 1000);	    
 	    // Create array and add the question answer combo to it
 	    var visibleQuestion = questionAnswers[Object.keys(questionAnswers)[questionNumber]];
-	    console.log(visibleQuestion);
 	    // Displays the question
 		$("#question").append(visibleQuestion[0]);
 	    // Display the answers in buttons
@@ -69,9 +72,8 @@ $("#restart").on("click", restart)
 		$("#answers").html("<h2></h2>");
 		number = 5;
 		questionNumber = questionNumber + 1;
-		console.log(questionNumber);
 		// If all the questions have been used then show results
-		if (questionNumber > 2) {
+		if (questionNumber > 3) {
 			timerDone = "";
 			$("#showTimer").html("<h2>" + timerDone + "</h2>");
 			$("#gameStatus").html("<h2>Game Over!</h2>");
@@ -81,20 +83,27 @@ $("#restart").on("click", restart)
 			visibleQuestion = 0;
 		}else{
 		// Wait a few seconds then run the run function again
+		// Show whether or not the answer is correct
 		timerDone = "Get Ready For The Next Question";
 		$("#showTimer").html("<h2>" + timerDone + "</h2>");
+		if (result === true) {
+			$("#result").html("<h1>Correct!</h1>");
+		}else{
+			$("#result").html("<h1>Wrong!</h1>");
+		}
 	    setTimeout(run, 2000);
 		}
 	}
 	// function to check if the right button is pushed
 	function scoreKeeper() {
 		var buttonValue = $(this).attr("value");
-		console.log(buttonValue);
-		if (buttonValue === "w" || buttonValue === "Now" || buttonValue === "34") {
-			correctAnswers = correctAnswers + 1
+		if (buttonValue === "w" || buttonValue === "Now" || buttonValue === "34" || buttonValue === "Edison") {
+			correctAnswers = correctAnswers + 1;
+			result = true;
 			stop();
 		}else{
-			wrongAnswers = wrongAnswers + 1
+			wrongAnswers = wrongAnswers + 1;
+			result = false;
 			stop();
 		}
 
